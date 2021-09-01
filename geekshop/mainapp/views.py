@@ -2,12 +2,17 @@ from django.shortcuts import render
 
 
 def main(request):
-    return render(request, 'mainapp/index.html')
+    name = {'title': 'Магазин'}
+    return render(request, 'mainapp/index.html', name)
 
 
 def products(request):
-    return render(request, 'mainapp/products.html')
+    name = {'title': 'Каталог'}
+    return render(request, 'mainapp/products.html', name)
 
 
 def contact(request):
-    return render(request, 'mainapp/contact.html')
+    name = {'title': 'Контакты'}
+    return render(request, 'mainapp/contact.html', name)
+
+
