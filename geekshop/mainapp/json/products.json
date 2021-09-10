@@ -1,47 +1,47 @@
 [
   {
+    "category": "дом",
     "name": "стул д 1",
     "image": "products_imges/download_3_Y4sNmpK.jpeg",
     "short_desc": "домашний стул",
     "description": "Домашний стул Домашний стул Домашний стул",
     "price": "1000",
-    "quantity": "10",
-    "category_id": "1"
+    "quantity": "10"
   },
   {
+    "category": "офис",
     "name": "стул оф 2",
     "image": "products_imges/download_1.jpeg",
     "short_desc": "офисный стул",
     "description": "офисный стул офисный стул офисный стул",
     "price": "1000",
-    "quantity": "10",
-    "category_id": "2"
+    "quantity": "10"
   },
   {
+    "category": "модерн",
     "name": "стул мо 3",
     "image": "products_imges/images_3.jpeg",
     "short_desc": "модерн стул",
     "description": "модерн стул модерн стул стул Домашний стул",
     "price": "1000",
-    "quantity": "10",
-    "category_id": "3"
+    "quantity": "10"
   },
   {
+    "category": "классика",
     "name": "стул кл 4",
     "image": "products_imges/images_1.jpeg",
     "short_desc": "классик стул",
     "description": "классик стул классик стул классик стул",
     "price": "1000",
-    "quantity": "10",
-    "category_id": "4"
+    "quantity": "10"
   },
   {
+    "category": "дом",
     "name": "стул д 5",
     "image": "products_imges/download_j3zjlMW.jpeg",
     "short_desc": "домашний стул",
     "description": "Домашний стул Домашний стул Домашний стул",
     "price": "1000",
-    "quantity": "10",
-    "category_id": "1"
+    "quantity": "10"
   }
 ]
