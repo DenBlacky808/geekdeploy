@@ -27,6 +27,7 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('', mainapp.main, name='main'),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
