@@ -8,7 +8,13 @@ from basketapp.models import Basket
 
 
 def main(request):
-    content = {'title': 'Магазин'}
+    basket = get_basket(request.user)
+
+    content = {
+        'title': 'Магазин',
+        'basket': basket,
+    }
+
     return render(request, 'mainapp/index.html', content)
 
 
@@ -35,6 +41,7 @@ def products(request, pk=None):
             'links_menu': links_menu,
             'category': category,
             'products': products,
+            'basket': basket,
         }
 
         return render(request, 'mainapp/products_list.html', content)
@@ -53,7 +60,12 @@ def products(request, pk=None):
 
 
 def contact(request):
-    content = {'title': 'Контакты'}
+    basket = get_basket(request.user)
+
+    content = {
+        'title': 'Контакты',
+        'basket': basket,
+    }
     return render(request, 'mainapp/contact.html', content)
 
 

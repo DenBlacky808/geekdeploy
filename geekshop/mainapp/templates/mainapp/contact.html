@@ -7,6 +7,10 @@
 </head>
 <body>
 	<div class="container">
+        {% block menu %}
+            {% include 'mainapp/menu.html' %}
+        {% endblock %}
+
         {% block content %}
             <div class="hero">
                 <div class="header clearfix">
