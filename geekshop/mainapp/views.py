@@ -5,8 +5,6 @@ from .models import ProductCategory, Product
 from basketapp.models import Basket
 
 
-
-
 def main(request):
     basket = get_basket(request.user)
 
@@ -33,8 +31,6 @@ def products(request, pk=None):
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category__pk=pk).order_by('price')
-
-
 
         content = {
             'title': title,
