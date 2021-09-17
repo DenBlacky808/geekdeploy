@@ -5,6 +5,25 @@ from .models import ProductCategory, Product
 from basketapp.models import Basket
 
 
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
+
+
+def get_hot_product():
+    products = Product.objects.all()
+
+    return random.sample(list(products), 1)[0]
+
+
+def get_same_products(hot_product):
+    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+
+    return same_products
+
+
 def main(request):
     basket = get_basket(request.user)
 
@@ -77,21 +96,3 @@ def product(request, pk):
 
     return render(request, 'mainapp/product.html', content)
 
-
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
-
-
-def get_hot_product():
-    products = Product.objects.all()
-
-    return random.sample(list(products), 1)[0]
-
-
-def get_same_products(hot_product):
-    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
-
-    return same_products

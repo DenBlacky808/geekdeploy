@@ -1,0 +1,98 @@
+{% load static %}
+
+{% block css %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+{% endblock %}
+{% block js %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/basket_scripts.js' %}"></script>
+{% endblock %}
+
+<div class="h2 text-center head">
+    Ваша корзина,
+    {% if user.first_name %}
+        {{ user.first_name|title }}
+    {% else %}
+        Пользователь
+    {% endif %}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Количество</th>
+                    <th class="text-center">Цена товара</th>
+                    <th class="text-center">Стоимость товара</th>
+                    <th> </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for item in basket_items %}
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                                                              src="/media/{{ item.product.image }}"
+                                                                              style="width: 72px; height: 72px;"> </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="#">{{ item.product.name }}</a></h4>
+                                    <h5 class="media-heading"><a href="#">{{ item.product.category.name }}</a></h5>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                            <input type="number" name="{{ item.pk }}" min="0"
+                                   value="{{ item.quantity }}">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ item.product.price }}&nbspруб</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ item.product_cost }}&nbspруб</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                            <button type="button" class="btn btn-danger">
+                                <a href="{% url 'basket:remove' item.pk %}">
+                                <span class="glyphicon glyphicon-remove"></span> Удалить
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% if basket_items %}
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td><h3>В корзине {{ basket_items.0.total_quantity }} товаров общей стоимостью</h3></td>
+                        <td class="text-right"><h3><strong>{{ basket_items.0.total_cost }} руб</strong></h3></td>
+                    </tr>
+
+                {% endif %}
+                <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>
+                            <button type="button" class="btn btn-default">
+                                <a href="{% url 'main' %}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Продолжить покупки
+                                </a>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                Оформить заказ <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
