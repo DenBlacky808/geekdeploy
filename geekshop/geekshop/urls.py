@@ -22,7 +22,6 @@ from django.conf.urls import include
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
     path('products/', include('mainapp.urls', namespace='products')),
     path('contact/', mainapp.contact, name='contact'),
     path('', mainapp.main, name='main'),
