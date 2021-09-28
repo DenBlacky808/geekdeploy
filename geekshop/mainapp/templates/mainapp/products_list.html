@@ -1,53 +1,45 @@
-{% extends "mainapp/base.html" %}
+{% extends 'mainapp/base.html' %}
 {% load static %}
 
-<div class="container">
-    {% block menu %}
-        {% include 'mainapp/menu.html' %}
-    {% endblock %}
 
-    {% block content %}
-        <div class="details">
-            <div class="links clearfix">
-                {% include 'mainapp/inc_categories_menu.html' %}
-            </div>
-
-            <div class="products_list">
-                <div class="title clearfix">
-                    <h2>
-                        Категория: "{{ category.name|title }}"
-                    </h2>
-                </div>
-                <div style="display: flex;justify-content: space-between;padding-top: 64px;padding-bottom: 64px;">
-                    {% for product in products %}
-{#                        <div class="block">#}
-{#                            <a href="{% url 'products:product' product.pk %}" >#}
-{#                            <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}" class="rounded mx-auto d-block">#}
-{#                            <div class="text">#}
-{#                                <img src="{% static 'img/icon-hover.png' %}" alt="hover">#}
-{#                                <h4>{{ product.name }}</h4>#}
-{#                                <p>{{ product.description }} </p>#}
-{#                            </div>#}
-{#                            </a>#}
-{#                        </div>#}
-
-                        <div style="width: 359px;padding: 44px 32px;background: #FFFFFF;box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);border-radius: 10px;box-sizing: border-box;display: flex;flex-direction: column;">
-                            <img src="/media/{{ product.image }}"  alt="{{ product.short_desc }}">
-                            <div>
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}.</p>
-                                <a href="{% url 'products:product' product.pk %}" class="btn btn-primary">Подробнее</a>
-                            </div>
-                        </div>
-
-
-                    {% endfor %}
-                </div>
-            </div>
+{% block content %}
+    <div class="details">
+        <div class="links clearfix">
+            {% include 'mainapp/inc_categories_menu.html' %}
         </div>
 
-        <div class="clr"></div>
+        <div class="products_list">
+            <div class="title clearfix">
+                <h2>Категория: "{{ category.name|title }}"</h2>
+                <div class="paginator">
+                    {% if products.has_previous %}
+                        <a href="{% url 'products:page' category.pk products.previous_page_number %}"><</a>
+                    {% endif %}
+                    <span class="current">
+                    страница {{ products.number }} из {{ products.paginator.num_pages }}
+                    </span>
+                    {% if products.has_next %}
+                        <a href="{% url 'products:page' category.pk products.next_page_number %}">></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="category-products clearfix">
+                {% for product in products %}
+                    <div class="block">
+                        <a href="{% url 'products:product' product.pk %}">
+                            <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                            <div class="text">
+                                <img src="{% static 'img/icon-hover.png' %}" alt="hover">
+                                <h4>{{ product.name }}</h4>
+                                <p>{{ product.description }} </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-    {% endblock %}
+    <div class="clr"></div>
 
-</div>
+{% endblock %}
