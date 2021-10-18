@@ -55,3 +55,7 @@ class Basket(models.Model):
             self.product.quantity -= self.quantity
         self.product.save()
         super(self.__class__, self).save(*args, **kwargs)
+
+    @staticmethod
+    def get_item(pk):
+        return Basket.objects.get(id=pk)
