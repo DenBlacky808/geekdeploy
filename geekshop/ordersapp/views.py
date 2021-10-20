@@ -119,7 +119,7 @@ class OrderItemsUpdate(UpdateView):
         if self.object.get_total_cost() == 0:
             self.object.delete()
 
-        return super(OrderItemsCreate, self).form_valid(form)
+        return super(OrderItemsUpdate, self).form_valid(form)
 
 
 class OrderDelete(DeleteView):
