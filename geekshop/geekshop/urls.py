@@ -19,6 +19,7 @@ import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
+import debug_toolbar
 
 
 urlpatterns = [
@@ -32,7 +33,7 @@ urlpatterns = [
     re_path(r'^order/', include('ordersapp.urls', namespace='order')),
 ]
 if settings.DEBUG:
-    import debug_toolbar
+    # import debug_toolbar
 
     urlpatterns += [re_path(r'^__debug__/', include(debug_toolbar.urls))]
     # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
