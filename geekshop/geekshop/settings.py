@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'social_django',
     'ordersapp',
     'debug_toolbar',
+    'django_extensions',
+    'pydotplus',
 ]
 
 MIDDLEWARE = [
