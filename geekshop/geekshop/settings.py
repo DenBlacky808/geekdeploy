@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'social_django',
     'ordersapp',
     'debug_toolbar',
+    'django_extensions',
+    'pydotplus',
 ]
 
 MIDDLEWARE = [
@@ -157,13 +159,13 @@ if DEBUG:
        'debug_toolbar.panels.request.RequestPanel',
        'debug_toolbar.panels.sql.SQLPanel',
        'debug_toolbar.panels.templates.TemplatesPanel',
-       'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+       # 'debug_toolbar.panels.staticfiles.StaticFilesPanel',
        'debug_toolbar.panels.cache.CachePanel',
        'debug_toolbar.panels.signals.SignalsPanel',
        'debug_toolbar.panels.logging.LoggingPanel',
        'debug_toolbar.panels.redirects.RedirectsPanel',
        'debug_toolbar.panels.profiling.ProfilingPanel',
-       'template_profiler_panel.panels.template.TemplateProfilerPanel',
+       # 'template_profiler_panel.panels.template.TemplateProfilerPanel',
    ]
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
